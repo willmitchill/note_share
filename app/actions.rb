@@ -50,5 +50,12 @@ end
 
 
 get '/home_page' do
+  @universities = University.all.order(:school_name)
   erb :home_page
+end
+
+
+
+get '/home_page/params[:school_name]' do
+  erb :home_page/[:school_name]
 end
