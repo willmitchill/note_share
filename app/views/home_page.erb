@@ -1,11 +1,13 @@
-<h1>Note Share</h1>
-<h2>A resource that allows University and College students to share tests, notes and assignments within their schools and classes</h2>
 
 
-<select>
+<!-- <select>
+  <% @universities.all.each do |university| %>
+    <a href= '/home_page <%= university.school_name %>'><option value='<%= "#{university.school_name}" %>'><%= university.school_name %></option></a>
+  <% end %>
+</select> -->
 
-<% @universities.all.each do |university| %>
-<a href= '/home_page <%= university.school_name %>'><option value='<%= "#{university.school_name}" %>'><%= university.school_name %></option></a>
-<% end %>
-
-</select>
+<ul>
+  <% @universities.all.each do |university| %>
+    <li><a href='/home_page/<%=university.id%>'><%= university.school_name %></a></li>
+  <% end %>
+</ul>

@@ -1,5 +1,5 @@
 # Homepage (Root path)
-
+require 'pry'
 ####HELPERS#####
 
 helpers do
@@ -56,6 +56,26 @@ end
 
 
 
-get '/home_page/params[:school_name]' do
-  erb :home_page/[:school_name]
+get '/home_page/:id' do
+  @university = University.find(params[:id])
+  erb :'/school'
 end
+
+
+#### COURSE ROUTES #####
+
+get '/views/add_course' do
+  erb :'/add_course'
+end
+
+
+
+
+
+#
+# get '/admin/jobs/user/:id' do
+#
+#   @user = User.find(params[:id])
+#   erb :'/job_edit'
+#
+# end
