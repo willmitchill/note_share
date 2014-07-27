@@ -26,12 +26,12 @@ post '/' do
     session[:user_id] = @user.id
     redirect '/home_page'
   else
-    erb :'/signup'
+    erb :signup
   end
 end
 
 get '/signup' do
-  erb :'/signup'
+  erb :signup
 end
 
 post '/signup' do
@@ -58,14 +58,27 @@ end
 
 get '/home_page/:id' do
   @university = University.find(params[:id])
-  erb :'/school'
+  erb :school
 end
 
 
 #### COURSE ROUTES #####
 
 get '/views/add_course' do
-  erb :'/add_course'
+  erb :add_course
+end
+
+post '/add_course' do
+  @course = Course.new(
+    course_name: params[:course_name],
+    department: params[:department]
+    # teacher: params[:teacher],
+    # coursenum: params[:coursenum]
+    )
+    @course.save
+    redirect '/home_page'
+
+
 end
 
 
