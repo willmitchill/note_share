@@ -31,7 +31,7 @@ post '/' do
 end
 
 get '/signup' do
-  erb :'signup/signup'
+  erb :'/signup'
 end
 
 post '/signup' do
