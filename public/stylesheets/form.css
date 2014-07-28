@@ -1,0 +1,68 @@
+html {
+  background: url(http://wallpoper.com/images/00/29/35/59/ferris-bueller_00293559.jpg) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  z-index: -1;
+}
+
+article {
+/*  just a fancy border  */
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border: 10px solid rgba(255, 255, 255, 0.5);
+  margin: 10px;
+  z-index: -1;
+}
+
+h1  {
+  position: absolute;
+  top: 60%;
+  width: 100%;
+  font-size: 46px;
+  letter-spacing: 3px;
+  color: #fff;
+  font-family: Oswald, sans-serif;
+  text-align: center;
+  color: black
+}
+
+#login_form {
+
+}
+
+input[type=text] {
+  padding:15px;
+  border:2px solid #ccc;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+}
+
+input[type=text]:focus {
+  border-color:black;
+}
+
+input[type=password] {
+  padding:5px;
+  border:2px solid #ccc;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+}
+
+input[type=password]:focus {
+  border-color:#333;
+  }
+
+
+input[type=submit] {
+  padding:5px 15px;
+  background:#CC1100;
+  border:0 none;
+  cursor:pointer;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+  }

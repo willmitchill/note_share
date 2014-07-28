@@ -1,0 +1,13 @@
+<h1><%= @university.school_name %></h1>
+<% @school_id= @university.id %>
+
+
+
+<a href ='/course/<%=@school_id%>'>Add a new course!</a>
+
+
+<% Course.where(University_id: @school_id).each do |course| %>
+  <%= course.course_name  %>
+<% end %>
+
+<br>

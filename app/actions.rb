@@ -24,7 +24,8 @@ post '/' do
     )
    if @user
     session[:user_id] = @user.id
-    redirect '/home_page'
+    erb :home_page
+
   else
     erb :signup
   end
@@ -57,30 +58,57 @@ end
 
 
 get '/home_page/:id' do
+  @universities = University.all.order(:school_name)
   @university = University.find(params[:id])
-  erb :school
+  @courses = Course.where(university_id: params[:id])
+  erb :'/course/school_courses'
 end
 
 
 #### COURSE ROUTES #####
 
-get '/views/add_course' do
-  erb :add_course
+get '/course/:university_id' do
+  @university_id = params[:university_id]
+  erb :'/course/add_course'
 end
 
-post '/add_course' do
-  @course = Course.new(
+# get '/proposal_form/:job_id' do
+#   @job_id = params[:job_id]
+#   erb :'/proposal_form'
+# end
+
+post '/course/:university_id' do
+
+  Course.create(
     course_name: params[:course_name],
-    department: params[:department]
+    department: params[:department],
+    university_id: params[:university_id]
+
+    # university_id: = @school_name
     # teacher: params[:teacher],
     # coursenum: params[:coursenum]
     )
-    @course.save
-    redirect '/home_page'
 
-
+    redirect "/home_page"
 end
 
+#### SCHOOL ROUTE ####
+
+
+# post '/proposal_form/:job_id' do
+#   @proposal = Proposal.new(
+#     photo: params[:photo],
+#     description: params[:description],
+#     preview: params[:preview],
+#     user_id: session[:user_id].to_i,
+#     job_id: params[:job_id].to_i
+#   )
+#   if @proposal.save
+#     redirect '/'
+#   else
+#     erb :'/job'
+#   end
+# end
 
 
 
