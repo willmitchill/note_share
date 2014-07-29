@@ -99,13 +99,14 @@ get '/universities/:id/:course_id' do
 
   @university_id = params[:id]
   @course_id = params[:course_id]
+  @course = Course.find(@course_id)
   erb :'course/notes/course_notes'
 end
 
 post '/universities/:id/:course_id' do
-binding.pry
+
     current_user.notes.create :file => params[:uploaded_file], :course_id => params[:course_id]
-binding.pry
+
     redirect "/universities/#{params[:id]}"
 end
 

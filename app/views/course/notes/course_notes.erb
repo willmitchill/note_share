@@ -1,11 +1,7 @@
 <div class="container">
   <h2>Upload some tests to help out the homies!</h2>
 
-  <form action='/universities/<%=@university_id%>/<%=@course_id%>' method="post" enctype="multipart/for-data">
-    <div>
-      <label>File Name:</label>
-      <input type="text" name="file_name">
-    </div>
+  <form action='/universities/<%= @university_id %>/<%= @course_id %>' method="post" enctype="multipart/form-data">
     <div>
       <label>File:</label>
       <input type="file" name="uploaded_file">
@@ -15,4 +11,10 @@
     </div>
   </form>
 
+</div>
+
+<div>
+  <% @course.notes.each do |note| %>
+    <img src='<%= note.file.url %>'/>
+  <% end %>
 </div>

@@ -25,6 +25,13 @@ configure do
   set :views, File.join(Sinatra::Application.root, "app", "views")
 end
 
+CarrierWave.configure do |config|
+  config.permissions = 0666
+  config.directory_permissions = 0777
+  config.enable_processing = false
+  config.root = "#{APP_ROOT}/public"
+end
+
 # Set up the database and models
 require APP_ROOT.join('config', 'database')
 
