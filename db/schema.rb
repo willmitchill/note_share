@@ -10,10 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140727122614) do
+ActiveRecord::Schema.define(version: 20140728164014) do
 
   create_table "courses", force: true do |t|
-    t.string   "school"
     t.string   "course_name"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -22,7 +21,7 @@ ActiveRecord::Schema.define(version: 20140727122614) do
   end
 
   create_table "notes", force: true do |t|
-    t.string   "note_img"
+    t.string   "file"
     t.string   "course_id"
     t.integer  "user_id"
     t.datetime "created_at"
@@ -30,9 +29,9 @@ ActiveRecord::Schema.define(version: 20140727122614) do
   end
 
   create_table "universities", force: true do |t|
-    t.string   "school_name"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "name"
   end
 
   create_table "users", force: true do |t|

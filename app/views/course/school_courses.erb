@@ -1,4 +1,4 @@
-<h1><%= @university.school_name %></h1>
+<h1><%= @university.name %></h1>
 <% @school_id= @university.id %>
 
 
@@ -7,7 +7,7 @@
 
 
 <% Course.where(University_id: @school_id).each do |course| %>
-  <%= course.course_name  %>
+  <a href = '/universities/<%=@school_id%>/<%=course.id%>'><%= course.course_name  %></a>
 <% end %>
 
 <br>

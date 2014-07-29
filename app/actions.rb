@@ -24,7 +24,7 @@ post '/' do
     )
    if @user
     session[:user_id] = @user.id
-    erb :home_page
+    redirect '/universities'
 
   else
     erb :signup
@@ -46,18 +46,19 @@ post '/signup' do
     image: params[:image]
     )
     @user.save
-    redirect '/home_page'
+    redirect '/universities'
 end
 
 
-get '/home_page' do
-  @universities = University.all.order(:school_name)
-  erb :home_page
+get '/universities' do
+  @universities = University.all.order(:name)
+  erb :universities
 end
 
 
 
-get '/home_page/:id' do
+
+get '/universities/:id' do
   @universities = University.all.order(:school_name)
   @university = University.find(params[:id])
   @courses = Course.where(university_id: params[:id])
@@ -89,34 +90,40 @@ post '/course/:university_id' do
     # coursenum: params[:coursenum]
     )
 
-    redirect "/home_page"
+    redirect "/universities/#{params[:university_id]}"
 end
+
+#### NOTE ROUTES #####
+
+get '/universities/:id/:course_id' do
+
+  @university_id = params[:id]
+  @course_id = params[:course_id]
+  erb :'course/notes/course_notes'
+end
+
+post '/universities/:id/:course_id' do
+binding.pry
+    current_user.notes.create :file => params[:uploaded_file], :course_id => params[:course_id]
+binding.pry
+    redirect "/universities/#{params[:id]}"
+end
+
+
+
 
 #### SCHOOL ROUTE ####
 
+##### UPLOADER ######
 
-# post '/proposal_form/:job_id' do
-#   @proposal = Proposal.new(
-#     photo: params[:photo],
-#     description: params[:description],
-#     preview: params[:preview],
-#     user_id: session[:user_id].to_i,
-#     job_id: params[:job_id].to_i
-#   )
-#   if @proposal.save
-#     redirect '/'
-#   else
-#     erb :'/job'
-#   end
+# get '/course' do
+#   erb :'course/notes/course_notes'
 # end
-
-
-
-
 #
-# get '/admin/jobs/user/:id' do
+# post '/course' do
+#   current_user.notes.create :uploaded_file => params[:upload], :uploaded_file => params[:]
 #
-#   @user = User.find(params[:id])
-#   erb :'/job_edit'
+#   u.save!
 #
+#   @uploaded_file.to_s
 # end

@@ -1,0 +1,9 @@
+
+<h2>A tool for students to share notes!</h2>
+
+<ul>
+
+  <% @universities.all.each do |university| %>
+    <li><a href='/universities/<%=university.id%>'><%= university.name %></a></li>
+  <% end %>
+</ul>
