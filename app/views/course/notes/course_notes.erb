@@ -15,6 +15,7 @@
 
 <div>
   <% @course.notes.each do |note| %>
-    <img src='<%= note.file.url %>'/>
+    <div id='test'><img src='<%= note.file.url %>'/></div>
+    <div id='test'><a href='/universities/<%=@university_id%>/<%=@course_id%>' id='btn'>Upvote!</a><div>
   <% end %>
 </div>

@@ -3,7 +3,7 @@
 
 
 
-<a href ='/course/<%=@school_id%>'>Add a new course!</a>
+<a href ='/course/<%=@school_id%>' id='btn'>Add a new course!</a>
 
 
 <% Course.where(University_id: @school_id).each do |course| %>
